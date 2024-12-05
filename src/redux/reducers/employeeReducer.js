@@ -1,15 +1,16 @@
-import { UPDATE_EMPLOYEE } from '../employeeActions'
+import { GET_EMPLOYEES, UPDATE_EMPLOYEE } from '../employeeActions'
 import { ADD_EMPLOYEE } from '../employeeActions'
 import { DELETE_EMPLOYEE } from '../employeeActions'
 const initialState = {
-  employees: [
-    { id: 1, name: 'John Doe', position: 'Manager' },
-    { id: 2, name: 'Jane Smith', position: 'Developer' },
-  ],
+  employees: [],
+  empName:'',
 }
 
 const employeeReducer = (state = initialState, action) => {
   switch (action.type) {
+    case GET_EMPLOYEES:
+      return { ...state, employees: action.payload }
+
     case ADD_EMPLOYEE:
       return { ...state, employees: [...state.employees, action.payload] }
 
